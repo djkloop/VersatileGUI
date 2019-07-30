@@ -61,6 +61,18 @@
     "*.vue": [
       "vue-cli-service lint",
       "git add"
+    ],
+    "packages/**/*.ts": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "packages/**/*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "packages/**/*.tsx": [
+      "vue-cli-service lint",
+      "git add"
     ]
   },
   "config": {
