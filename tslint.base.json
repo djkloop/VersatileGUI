@@ -22,7 +22,6 @@
     "no-duplicate-variable": true,
     "no-eval": true,
     "no-internal-module": true,
-    "no-multi-spaces": true,
     "no-namespace": true,
     "no-reference": true,
     "no-shadowed-variable": true,
@@ -33,7 +32,6 @@
     "one-variable-per-declaration": [true, "ignore-for-loop"],
     "prefer-const": [true, { "destructuring": "all" }],
     "radix": true,
-    "space-in-parens": true,
     "switch-default": true,
     "trailing-comma": [
       true,
@@ -71,7 +69,6 @@
     ],
     "jsx-no-lambda": false,
     "jsx-no-string-ref": false,
-    "jsx-boolean-value": [true, "never"],
     "jsx-no-multiline-js": false,
     "whitespace": [
       true,

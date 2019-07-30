@@ -50,27 +50,11 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.tsx": [
+    "*.{ts,tsx}": [
       "vue-cli-service lint",
       "git add"
     ],
     "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "packages/**/*.ts": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "packages/**/*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "packages/**/*.tsx": [
       "vue-cli-service lint",
       "git add"
     ]
