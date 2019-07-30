@@ -2,11 +2,14 @@
   "name": "versatilegui",
   "version": "0.1.0",
   "private": true,
+  "typings": "typings/index.d.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "commit": "git add . && git cz",
+    "cz:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -17,6 +20,8 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
     "@types/jest": "^23.1.4",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-typescript": "^3.9.0",
@@ -24,10 +29,43 @@
     "@vue/cli-service": "^3.9.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
+    "commitizen": "^4.0.3",
+    "conventional-changelog-cli": "^2.0.23",
+    "cz-conventional-changelog": "^3.0.2",
+    "cz-customizable": "^6.2.0",
+    "husky": "^3.0.2",
+    "lerna": "^3.13.4",
+    "lint-staged": "^9.2.1",
+    "replace": "^1.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "ts-jest": "^23.0.0",
     "typescript": "^3.4.3",
     "vue-template-compiler": "^2.6.10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.tsx": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
   }
 }
