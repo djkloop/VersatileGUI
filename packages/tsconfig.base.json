@@ -13,7 +13,8 @@
     "sourceMap": false,
     "typeRoots": [
       "./node_modules/@types",
-      "./typings/index.d.ts"
+      "./typings/index.d.ts",
+      "node_modules/vue-tsx-support/enable-check.d.ts",
     ],
     "types": [
       "webpack-env",
@@ -23,7 +24,7 @@
       "esnext",
       "dom",
       "dom.iterable",
-      "scripthost"
+      "scripthost",
     ]
   }
 }

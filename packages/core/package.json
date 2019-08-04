@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/djkloop/VersatileGUI/issues"
+  },
+  "dependencies": {
+    "vue-tsx-support": "^2.3.1"
   }
 }

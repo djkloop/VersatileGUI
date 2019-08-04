@@ -11,7 +11,10 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": false,
     "baseUrl": ".",
-    "typeRoots": ["/node_modules/@types", "/typings/index.d.ts"],
+    "typeRoots": [
+      "/node_modules/@types",
+      "/typings/index.d.ts"
+    ],
     "types": [
       "webpack-env",
       "jest"

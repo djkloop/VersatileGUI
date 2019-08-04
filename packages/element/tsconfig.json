@@ -9,4 +9,9 @@
   "include": [
     "src/**/*"
   ],
+  "typeRoots": [
+    "./node_modules/@types",
+    "./typings/index.d.ts",
+    "node_modules/vue-tsx-support/enable-check.d.ts",
+  ],
 }

@@ -67,8 +67,5 @@
     "commitizen": {
       "path": "./node_modules/cz-customizable"
     }
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }

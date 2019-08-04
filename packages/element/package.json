@@ -24,6 +24,7 @@
     "url": "https://github.com/djkloop/VersatileGUI/issues"
   },
   "dependencies": {
+    "element-ui": "^2.11.1",
     "versatile-core": "^0.0.0"
   }
 }
