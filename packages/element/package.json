@@ -1,5 +1,5 @@
 {
-  "name": "versatile-core",
+  "name": "versatile-element",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "djkloop <1044032256@qq.com>",
@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/djkloop/VersatileGUI/issues"
+  },
+  "dependencies": {
+    "versatile-core": "^0.0.0"
   }
 }

@@ -1,11 +1,11 @@
 {
-  "name": "versatile-core",
+  "name": "versatile-theme-iview",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "djkloop <1044032256@qq.com>",
   "homepage": "https://github.com/djkloop/VersatileGUI#readme",
   "license": "MIT",
-  "main": "src/index.tsx",
+  "main": "lib/iview.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
