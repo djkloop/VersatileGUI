@@ -16,9 +16,8 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
     return (
       <div class='ver-theme-ele ver_container'>
         <div class='ver-'>
-
+            <VersatileGUICore theme={'yeah'}/>
         </div>
-        <VersatileGUICore theme='2222' />
       </div>
     );
   }

@@ -6,6 +6,7 @@
   "homepage": "https://github.com/djkloop/VersatileGUI#readme",
   "license": "MIT",
   "main": "src/index.tsx",
+  "typings": "typings/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -25,6 +26,7 @@
   },
   "dependencies": {
     "element-ui": "^2.11.1",
-    "versatile-core": "^0.0.0"
+    "versatile-core": "^0.0.0",
+    "vue-tsx-support": "^2.3.1"
   }
 }

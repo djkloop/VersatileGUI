@@ -5,9 +5,9 @@ import { createComponent, createDesignComponent } from './lifecycle';
   Vue.component(VersatileGUICore.name, VersatileGUICore);
 };
 
-export default VersatileGUICore;
-
 export {
   createComponent,
   createDesignComponent,
 };
+
+export default VersatileGUICore;

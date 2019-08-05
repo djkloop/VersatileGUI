@@ -1,17 +1,11 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "composite": true,
     "rootDir": "src",
-    "outDir": "lib",
-    "resolveJsonModule": true
+    "outDir": "lib"
   },
-  "include": [
-    "src/**/*"
-  ],
   "typeRoots": [
-    "./node_modules/@types",
-    "./typings/index.d.ts",
-    "node_modules/vue-tsx-support/enable-check.d.ts",
-  ],
+    "/node_modules/@types",
+    "/typings/index.d.ts"
+  ]
 }

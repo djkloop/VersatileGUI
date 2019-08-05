@@ -1,10 +1,11 @@
 import * as tsx from 'vue-tsx-support';
 import { Component, Prop } from 'vue-property-decorator';
 import PropTypes from 'vue-types';
+import ThemeRender from './ThemeRender';
 
 const COMPONENT_NAME = 'VersatileGUICore';
 
-interface VersatileGUICoreProps {
+export interface VersatileGUICoreProps {
   theme: string;
 }
 
@@ -14,12 +15,12 @@ interface VersatileGUICoreProps {
 export default class VersatileGUICore extends tsx.Component<VersatileGUICoreProps> {
 
   @Prop(PropTypes.string.isRequired)
-  public theme!: string;
+  public theme: string;
 
   public render() {
     return (
       <div>
-        1111
+        <ThemeRender theme='aaa'/>
       </div>
     );
   }
