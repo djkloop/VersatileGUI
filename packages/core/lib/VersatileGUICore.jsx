@@ -2,12 +2,14 @@ import * as tslib_1 from "tslib";
 import * as tsx from 'vue-tsx-support';
 import { Component, Prop } from 'vue-property-decorator';
 import PropTypes from 'vue-types';
-import ThemeRender from './ThemeRender';
 const COMPONENT_NAME = 'VersatileGUICore';
 let VersatileGUICore = class VersatileGUICore extends tsx.Component {
+    created() {
+        console.log(this.theme);
+    }
     render() {
         return (<div>
-        <ThemeRender theme='aaa'/>
+        11111
       </div>);
     }
 };

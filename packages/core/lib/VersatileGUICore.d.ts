@@ -3,6 +3,7 @@ export interface VersatileGUICoreProps {
     theme: string;
 }
 export default class VersatileGUICore extends tsx.Component<VersatileGUICoreProps> {
-    theme: string;
-    render(): JSX.Element;
+    public theme: string;
+    public created(): void;
+    public render(): JSX.Element;
 }

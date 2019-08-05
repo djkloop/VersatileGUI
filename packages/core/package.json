@@ -5,7 +5,7 @@
   "author": "djkloop <1044032256@qq.com>",
   "homepage": "https://github.com/djkloop/VersatileGUI#readme",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "src/index.tsx",
   "typings": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
