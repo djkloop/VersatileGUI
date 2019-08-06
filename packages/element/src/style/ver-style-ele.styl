@@ -1,3 +1,36 @@
+box-shadow-color = #f0f1f2
+
+
 .ver
-   &_container
-     background cadetblue;
+  &_container
+
+  &_ele
+    &_header
+      box-shadow 0 2px 8px box-shadow-color
+
+      h1
+        margin 0
+        float left
+        font-size 32px
+        font-weight 400
+        line-height 60px
+        a
+          color #333
+          text-decoration none
+          display block
+
+      &_nav_logo
+        vertical-align sub
+        line-height 60px
+
+  &_main
+    padding 20px
+
+    &_aside
+
+      &_left,
+      &_right
+        height calc(100vh - 100px)
+        overflow-y auto
+        box-shadow 0 2px 8px box-shadow-color
+

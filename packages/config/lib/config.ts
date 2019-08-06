@@ -1,5 +1,5 @@
 export default {
   LAYOUT: {
-    ASIDE_WIDTH: '200px',
+    ASIDE_WIDTH: '300px',
   },
 };
