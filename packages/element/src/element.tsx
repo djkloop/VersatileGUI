@@ -19,7 +19,7 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
     return (
         <el-container>
           <el-header class='ver-theme-ele ver_container'>
-            我是头部
+            我是头部 - git用户修改
           </el-header>
           <el-container>
             <el-aside style={{ width: Config.LAYOUT.ASIDE_WIDTH }}>side-left</el-aside>
