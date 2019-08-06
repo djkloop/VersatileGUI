@@ -1,9 +1,12 @@
 import { Component } from 'vue-property-decorator';
 import * as tsx from 'vue-tsx-support';
-import './plugin';
-
-import './style/ver-style-ele.styl';
 import VersatileGUICore, { createComponent, createDesignComponent } from 'versatile-core';
+import Config from 'versatile-config';
+
+import './plugin';
+import './style/ver-style-ele.styl';
+import 'normalize.css';
+
 export const COMPONENT_NAME = 'VersatileGUIEle';
 
 @Component({
@@ -14,16 +17,18 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
     createComponent(1);
     createDesignComponent(2);
     return (
-      <div class='ver-theme-ele ver_container'>
-        {/* <header class='ver_header'>
-        </header>
-        <main class='ver_content'>
-          <VersatileGUICore theme={'yeah'}/>
-        </main>
-        <footer class='ver_footer'>
-
-        </footer> */}
-      </div>
+        <el-container>
+          <el-header class='ver-theme-ele ver_container'>
+            我是头部
+          </el-header>
+          <el-container>
+            <el-aside style={{ width: Config.LAYOUT.ASIDE_WIDTH }}>side-left</el-aside>
+            <el-main>
+              <VersatileGUICore theme={'yeah'}/>
+            </el-main>
+            <el-aside style={{ width: Config.LAYOUT.ASIDE_WIDTH }}>side-right</el-aside>
+          </el-container>
+        </el-container>
     );
   }
 }

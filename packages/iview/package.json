@@ -1,8 +1,8 @@
 {
-  "name": "versatile-theme-iview",
-  "version": "0.0.0",
+  "name": "versatile-iview",
+  "version": "0.1.0",
   "description": "> TODO: description",
-  "author": "djkloop <1044032256@qq.com>",
+  "author": "djkloop <djkloopjs@gmail.com>",
   "homepage": "https://github.com/djkloop/VersatileGUI#readme",
   "license": "MIT",
   "main": "lib/iview.js",
@@ -13,6 +13,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/djkloop/VersatileGUI.git"
@@ -22,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/djkloop/VersatileGUI/issues"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }

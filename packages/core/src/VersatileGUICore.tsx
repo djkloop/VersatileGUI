@@ -24,7 +24,9 @@ export default class VersatileGUICore extends tsx.Component<VersatileGUICoreProp
   public render() {
     return (
       <div>
-        11111
+        当前ui库 -> {
+          this.theme
+        }
       </div>
     );
   }

@@ -1,11 +1,11 @@
 {
-  "name": "versatile-antd",
-  "version": "0.0.0",
-  "description": "> TODO: description",
-  "author": "djkloop <1044032256@qq.com>",
+  "name": "versatile-config",
+  "version": "0.1.0",
+  "description": "公共变量库",
+  "author": "djkloop <djkloopjs@gmail.com>",
   "homepage": "https://github.com/djkloop/VersatileGUI#readme",
   "license": "MIT",
-  "main": "lib/antd.js",
+  "main": "lib/config.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -13,6 +13,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/djkloop/VersatileGUI.git"
@@ -22,8 +25,5 @@
   },
   "bugs": {
     "url": "https://github.com/djkloop/VersatileGUI/issues"
-  },
-  "dependencies": {
-    "normalize.css": "^8.0.1"
   }
 }

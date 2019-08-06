@@ -13,7 +13,6 @@
     "sourceMap": false,
     "types": [
       "webpack-env",
-      "element-ui"
       "jest"
     ],
     "lib": [
