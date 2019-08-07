@@ -3,7 +3,6 @@ import * as tsx from 'vue-tsx-support';
 import Draggable from 'vuedraggable';
 import VersatileGUICore, { createComponent, createDesignComponent } from 'versatile-core';
 import Config from 'versatile-config';
-import { uniqueID } from 'versatile-utils';
 import './plugin';
 import './style/ver-style-ele.styl';
 import 'normalize.css';
@@ -165,7 +164,7 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
             {this.createRegisterComponent()}
           </el-aside>
           <el-main style={{ padding: '0 10px' }}>
-            {/* 把当前库的Draggable对象传进去不要在core里面重新安装一遍包两个对象并不能通过group中的name属性找到 */}
+            {/* 把当前库的Draggable对象传进去不要在core里面重新安装一遍vuedraggable包两个对象并不能通过group中的name属性找到 */}
             <VersatileGUICore
               draggable={Draggable}
               theme={'element'}
