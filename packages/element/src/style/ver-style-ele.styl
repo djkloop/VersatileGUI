@@ -1,12 +1,13 @@
-box-shadow-color = #f0f1f2
-
+@import "./ver-color.styl"
+@import "ver-common.styl"
+@import "./ver-theme-common.styl"
 
 .ver
   &_container
 
   &_ele
     &_header
-      box-shadow 0 2px 8px box-shadow-color
+      box-shadow 0 2px 8px $box-shadow-color
 
       h1
         margin 0
@@ -32,13 +33,9 @@ box-shadow-color = #f0f1f2
       &_right
         height calc(100vh - 100px)
         overflow-y auto
-        box-shadow 0 2px 8px box-shadow-color
+        box-shadow 0 2px 8px $box-shadow-color
 
 
-.list-group-item
-  border 1px solid #ccc
-  margin 5px 0
-  height 40px
-  line-height 40px
+
 
 

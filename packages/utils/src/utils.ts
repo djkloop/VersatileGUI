@@ -1,5 +1,3 @@
-'use strict';
+let id = 0;
 
-export default {
-  a: 3,
-};
+export const uniqueID = () => ++id;

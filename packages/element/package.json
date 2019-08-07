@@ -29,6 +29,7 @@
     "normalize.css": "^8.0.1",
     "versatile-config": "^0.1.0",
     "versatile-core": "^0.0.0",
+    "versatile-utils": "^0.0.0",
     "vue-tsx-support": "^2.3.1",
     "vuedraggable": "^2.23.0"
   },

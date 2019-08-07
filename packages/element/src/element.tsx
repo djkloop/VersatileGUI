@@ -3,6 +3,7 @@ import * as tsx from 'vue-tsx-support';
 import Draggable from 'vuedraggable';
 import VersatileGUICore, { createComponent, createDesignComponent } from 'versatile-core';
 import Config from 'versatile-config';
+import { uniqueID } from 'versatile-utils';
 import './plugin';
 import './style/ver-style-ele.styl';
 import 'normalize.css';
@@ -20,12 +21,13 @@ interface TaskProps {
 // data
 const message: TaskProps[] = [
   {
-    name: 'task 2',
-    tasks: [],
-  },
-  {
     name: 'task 1',
-    tasks: [],
+    tasks: [
+      {
+        name: 'task 2',
+        tasks: [],
+      },
+    ],
   },
   {
     name: 'task 3',
@@ -48,70 +50,103 @@ const message: TaskProps[] = [
 export default class VersatileGUIEle extends tsx.Component<{}> {
   public message: TaskProps[] = message;
 
+  private dragTag: string = 'ul';
+  private dragGroup: any = { name: 'widget', pull: 'clone', put: false };
+  private dragGhostClass: string = 'ghost';
+
   /**
    * 渲染每一个左侧组件的内部单个组件辅助函数
    *
    * @param {Array} components 生成的Vnode
+   * @param { String } type 组件的类型
    */
-  public createComponents(messageList): VNode {
+  public createComponents(components: any, type: string = '默认'): VNode {
     return (
-      <Draggable list={messageList} tag={'ul'} group={{name: 'g1'}}>
-      {
-        messageList.map((item, index) => {
-          if (item.tasks && item.tasks.length > 0) {
-            return (
-              <li key={item.name + '_' + index}>
-                <p>{item.name}</p>
-                {this.createComponents(item.tasks)}
-              </li>
-            );
-          } else {
-            return (
-              <li key={item.name + '_' + index}>
-                <p>{item.name}</p>
-              </li>
-            );
+      <div class={'ver_aside_component_list'}>
+        <div class={'ver_aside_component_list_title'}>
+          {type}组件
+        </div>
+        <Draggable
+          tag={this.dragTag}
+          list={components}
+          group={this.dragGroup}
+          sort={false}
+          forceFallback={true}
+          ghostClass={this.dragGhostClass}
+          clone={this.handleClone}
+          class={'ver_aside_component_list_box'}
+        >
+          {
+            components.map((item, index) => {
+              return (
+                <li
+                  class={'ver_aside_component_list_item'}
+                  data-item={JSON.stringify(item)}
+                  data-index={index + '_' + item.name}
+                >
+                  <a>{item.name}</a>
+                </li>
+              );
+            })
           }
-        })
-      }
-    </Draggable>
+        </Draggable>
+      </div>
     );
   }
 
   /**
    *  渲染左侧辅助函数
    */
-  public createRegisterComponent() {
+  public createRegisterComponent(): VNode[] {
     const {layoutComponents, assistComponents, basicComponents, imgComponents} = RegisterComponent;
     const components = [];
 
     // 如果存在布局组件
     if (layoutComponents) {
-      components.push(this.createComponents(this.message));
+      components.push(this.createComponents(layoutComponents, '布局'));
     }
 
-    // // 如果存在基础组件
-    // if (basicComponents) {
-    //   components.push(this.createComponents(basicComponents));
-    // }
-    //
-    // // 图片组件
-    // if (imgComponents) {
-    //   components.push(this.createComponents(imgComponents));
-    // }
-    //
-    // // 辅助最贱
-    // if (assistComponents) {
-    //   components.push(this.createComponents(assistComponents));
-    // }
+    // 如果存在基础组件
+    if (basicComponents) {
+      components.push(this.createComponents(basicComponents, '基础'));
+    }
+
+    // 如果存在图片组件
+    if (imgComponents) {
+      components.push(this.createComponents(imgComponents, '图片'));
+    }
+
+    // 如果存在辅助组件
+    if (assistComponents) {
+      components.push(this.createComponents(assistComponents, '辅助'));
+    }
     return components;
   }
 
-  public created() {
+  public handleChange(e) {
+    console.log('emit-change', e);
+  }
+
+  // 添加进左边的事件
+  public handleAdd(e) {
+    console.log(this.message);
+    console.log('emit-add', e);
+  }
+
+  // clone之前添加一个only-key
+  public handleClone(v) {
+    // v.id = uniqueID() + '_' + Date.now();
+    // if (v.componentType === 'layout') {
+    //   v.tasks = [];
+    // }
+    return v;
+  }
+
+  private created() {
     this._init_lifecycle();
   }
 
-  public render() {
+  private render() {
     return (
       <el-container class='ver_container ver_theme_ele'>
         <el-header class='ver_ele_header'>
@@ -129,8 +164,18 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
           <el-aside class={'ver_main_aside_left'} style={{width: Config.LAYOUT.ASIDE_WIDTH}}>
             {this.createRegisterComponent()}
           </el-aside>
-          <el-main>
-            <VersatileGUICore theme={'yeah'}/>
+          <el-main style={{ padding: '0 10px' }}>
+            {/* 把当前库的Draggable对象传进去不要在core里面重新安装一遍包两个对象并不能通过group中的name属性找到 */}
+            <VersatileGUICore
+              draggable={Draggable}
+              theme={'element'}
+              dragGroup={this.dragGroup}
+              dragGhostClass={this.dragGhostClass}
+              dragTag={this.dragTag}
+              listData={this.message}
+              onChange={this.handleChange}
+              onAdd={this.handleAdd}
+            />
           </el-main>
           <el-aside class={'ver_main_aside_right'} style={{width: Config.LAYOUT.ASIDE_WIDTH}}>side-right</el-aside>
         </el-container>
@@ -142,6 +187,7 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
   private _init_lifecycle() {
     createComponent(1);
     createDesignComponent(2);
+    // tslint:disable-next-line:no-console
     console.log('生命周期函数初始化完毕');
   }
 }

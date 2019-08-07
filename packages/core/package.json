@@ -28,6 +28,8 @@
     "url": "https://github.com/djkloop/VersatileGUI/issues"
   },
   "dependencies": {
+    "lodash": "^4.17.15",
+    "versatile-utils": "^0.0.0",
     "vue-tsx-support": "^2.3.1"
   }
 }
