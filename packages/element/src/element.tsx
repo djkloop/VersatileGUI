@@ -3,12 +3,15 @@ import * as tsx from 'vue-tsx-support';
 import Draggable from 'vuedraggable';
 import VersatileGUICore, { createComponent, createDesignComponent } from 'versatile-core';
 import Config from 'versatile-config';
+import _ from 'lodash';
+import { Map } from 'immutable';
 import './plugin';
 import './style/ver-style-ele.styl';
 import 'normalize.css';
 
 import RegisterComponent from './data/registerComponents';
 import { VNode } from 'vue';
+import { uniqueID } from 'versatile-utils';
 
 export const COMPONENT_NAME = 'VersatileGUIEle';
 
@@ -19,35 +22,18 @@ interface TaskProps {
 
 // data
 const message: TaskProps[] = [
-  {
-    name: 'task 1',
-    tasks: [
-      {
-        name: 'task 2',
-        tasks: [],
-      },
-    ],
-  },
-  {
-    name: 'task 3',
-    tasks: [
-      {
-        name: 'task 4',
-        tasks: [],
-      },
-    ],
-  },
-  {
-    name: 'task 5',
-    tasks: [],
-  },
+
 ];
+
+const VuexDatas: TaskProps[] = [];
 
 @Component({
   name: COMPONENT_NAME,
 })
 export default class VersatileGUIEle extends tsx.Component<{}> {
   public message: TaskProps[] = message;
+  public VuexDatas: TaskProps[] = VuexDatas;
+  public RegisterComponent: any = Map(RegisterComponent);
 
   private dragTag: string = 'ul';
   private dragGroup: any = { name: 'widget', pull: 'clone', put: false };
@@ -76,7 +62,7 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
           class={'ver_aside_component_list_box'}
         >
           {
-            components.map((item, index) => {
+            components.map((item: any, index: number) => {
               return (
                 <li
                   class={'ver_aside_component_list_item'}
@@ -97,9 +83,16 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
    *  渲染左侧辅助函数
    */
   public createRegisterComponent(): VNode[] {
-    const {layoutComponents, assistComponents, basicComponents, imgComponents} = RegisterComponent;
+    console.log(RegisterComponent);
+    console.log(Map(RegisterComponent));
+    // const {layoutComponents, assistComponents, basicComponents, imgComponents} = RegisterComponent;
+    const Componrnts = Map(RegisterComponent);
+    const layoutComponents = Componrnts.get('layoutComponents');
+    const assistComponents = Componrnts.get('assistComponents');
+    const basicComponents = Componrnts.get('basicComponents');
+    const imgComponents = Componrnts.get('imgComponents');
+    console.log(layoutComponents)
     const components = [];
-
     // 如果存在布局组件
     if (layoutComponents) {
       components.push(this.createComponents(layoutComponents, '布局'));
@@ -122,23 +115,20 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
     return components;
   }
 
-  public handleChange(e) {
+  public handleChange(e: any) {
     console.log('emit-change', e);
   }
 
   // 添加进左边的事件
-  public handleAdd(e) {
+  public handleAdd(e: any) {
     console.log(this.message);
     console.log('emit-add', e);
   }
 
   // clone之前添加一个only-key
-  public handleClone(v) {
-    // v.id = uniqueID() + '_' + Date.now();
-    // if (v.componentType === 'layout') {
-    //   v.tasks = [];
-    // }
-    return v;
+  public handleClone(v: any) {
+    v.id = uniqueID() + '_' + Date.now();
+    return _.cloneDeep(v);
   }
 
   private created() {

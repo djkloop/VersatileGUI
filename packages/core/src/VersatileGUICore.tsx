@@ -38,37 +38,38 @@ export default class VersatileGUICore extends tsx.Component<VersatileGUICoreProp
   public list: TaskProps[] = [];
 
   @Prop(PropTypes.any)
-  public draggable: any;
+  public draggable!: any;
 
   @Prop(PropTypes.string.isRequired)
   public theme!: string;
 
   @Prop(PropTypes.string.def('ul'))
-  public dragTag: string;
+  public dragTag!: string;
 
   @Prop(PropTypes.object.def({}))
-  public dragGroup: any;
+  public dragGroup!: any;
 
   @Prop(PropTypes.string.def('ghost'))
-  public dragGhostClass: string;
+  public dragGhostClass!: string;
 
   @Prop(PropTypes.array.def([]))
-  public listData: any;
+  public listData!: any;
 
   public created() {
     // TODO:
     // console.log(this.theme);
   }
 
-  public handleOnAdd(e) {
+  public handleOnAdd(e: any) {
     this.$emit('add', e);
   }
 
-  public handleOnChange(e) {
+  public handleOnChange(e: any) {
     this.$emit('change', e);
   }
 
-  public createDraggableList(messageList) {
+  public createDraggableList(messageList: TaskProps[]) {
+    console.log(messageList);
     const Draggable = this.draggable;
     return (
       <Draggable
@@ -84,7 +85,7 @@ export default class VersatileGUICore extends tsx.Component<VersatileGUICoreProp
         ghostClass={this.dragGhostClass}
       >
       {
-        messageList.map((item, index) => {
+        messageList.map((item: TaskProps, index: number) => {
           return (
             <li class={'list-group-item'} key={item.name + '_' + index}>
               <p>{item.name}</p>
@@ -95,9 +96,7 @@ export default class VersatileGUICore extends tsx.Component<VersatileGUICoreProp
       }
     </Draggable>);
   }
-
   public render() {
     return this.createDraggableList(this.listData);
   }
-
 }

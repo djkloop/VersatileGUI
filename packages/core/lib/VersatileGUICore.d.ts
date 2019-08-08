@@ -31,7 +31,7 @@ export default class VersatileGUICore extends tsx.Component<VersatileGUICoreProp
     created(): void;
     handleOnAdd(e: any): void;
     handleOnChange(e: any): void;
-    createDraggableList(messageList: any): JSX.Element;
+    createDraggableList(messageList: TaskProps[]): JSX.Element;
     render(): JSX.Element;
 }
 export {};

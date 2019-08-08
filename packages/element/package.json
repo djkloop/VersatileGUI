@@ -25,7 +25,9 @@
     "url": "https://github.com/djkloop/VersatileGUI/issues"
   },
   "dependencies": {
+    "@types/immutable": "^3.8.7",
     "element-ui": "^2.11.1",
+    "immutable": "^4.0.0-rc.12",
     "normalize.css": "^8.0.1",
     "versatile-config": "^0.1.0",
     "versatile-core": "^0.0.0",
@@ -34,6 +36,8 @@
     "vuedraggable": "^2.23.0"
   },
   "devDependencies": {
-    "babel-plugin-component": "^1.1.1"
+    "@types/lodash": "^4.14.136",
+    "babel-plugin-component": "^1.1.1",
+    "lodash": "^4.17.15"
   }
 }

@@ -21,6 +21,7 @@ let VersatileGUICore = class VersatileGUICore extends tsx.Component {
         this.$emit('change', e);
     }
     createDraggableList(messageList) {
+        console.log(messageList);
         const Draggable = this.draggable;
         return (<Draggable onAdd={this.handleOnAdd} onChange={this.handleOnChange} class={'dragArea'} animation={100} swapThreshold={0.5} forceFallback={true} list={messageList} tag={this.dragTag} group={{ name: this.dragGroup.name }} ghostClass={this.dragGhostClass}>
       {messageList.map((item, index) => {
