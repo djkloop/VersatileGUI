@@ -7,12 +7,29 @@
     height 100%
 
 
-.dragArea
-  min-height 50px
-  outline 1px dashed
-  padding-left 24px
-  margin-top 0
-  margin-bottom 1rem
-  padding-bottom 10px
+    &_form
+      &_item
+        margin 0
+        position relative
+        padding 5px 10px
 
+        &.active
+          background #d8e8fa
+
+
+    &_drag_area
+      height 100%
+      padding-left 24px
+      padding-top 20px;
+
+      &_row,
+      &_col
+        height 30px
+        background yellow
+        outline none
+        margin 10px 0
+        border 1px solid
+
+      &_col
+        background greenyellow
 

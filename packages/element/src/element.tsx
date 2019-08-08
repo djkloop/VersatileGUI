@@ -6,6 +6,7 @@ import Config from 'versatile-config';
 import _ from 'lodash';
 import { Map } from 'immutable';
 import './plugin';
+import '../../../src/store';
 import './style/ver-style-ele.styl';
 import 'normalize.css';
 
@@ -25,15 +26,11 @@ const message: TaskProps[] = [
 
 ];
 
-const VuexDatas: TaskProps[] = [];
-
 @Component({
   name: COMPONENT_NAME,
 })
 export default class VersatileGUIEle extends tsx.Component<{}> {
   public message: TaskProps[] = message;
-  public VuexDatas: TaskProps[] = VuexDatas;
-  public RegisterComponent: any = Map(RegisterComponent);
 
   private dragTag: string = 'ul';
   private dragGroup: any = { name: 'widget', pull: 'clone', put: false };
@@ -83,15 +80,11 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
    *  渲染左侧辅助函数
    */
   public createRegisterComponent(): VNode[] {
-    console.log(RegisterComponent);
-    console.log(Map(RegisterComponent));
-    // const {layoutComponents, assistComponents, basicComponents, imgComponents} = RegisterComponent;
     const Componrnts = Map(RegisterComponent);
     const layoutComponents = Componrnts.get('layoutComponents');
     const assistComponents = Componrnts.get('assistComponents');
     const basicComponents = Componrnts.get('basicComponents');
     const imgComponents = Componrnts.get('imgComponents');
-    console.log(layoutComponents)
     const components = [];
     // 如果存在布局组件
     if (layoutComponents) {
@@ -116,13 +109,12 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
   }
 
   public handleChange(e: any) {
-    console.log('emit-change', e);
+    // console.log('emit-change', e);
   }
 
   // 添加进左边的事件
   public handleAdd(e: any) {
-    console.log(this.message);
-    console.log('emit-add', e);
+    // console.log('emit-add', e);
   }
 
   // clone之前添加一个only-key
@@ -146,6 +138,9 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
                 width={146} height={38}
                 src={require('./public/element-logo.svg')}
               />
+              <span>
+                VersatileGUI
+              </span>
             </a>
           </h1>
         </el-header>
@@ -177,6 +172,6 @@ export default class VersatileGUIEle extends tsx.Component<{}> {
     createComponent(1);
     createDesignComponent(2);
     // tslint:disable-next-line:no-console
-    console.log('生命周期函数初始化完毕');
+    console.log('core生命周期函数初始化完毕');
   }
 }

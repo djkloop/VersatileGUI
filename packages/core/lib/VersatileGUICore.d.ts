@@ -3,6 +3,8 @@ import './style/ver-core.styl';
 interface TaskProps {
     name: string;
     tasks?: TaskProps[];
+    id?: string;
+    type?: string;
 }
 /**
  *  theme: 当前使用的主题
@@ -22,6 +24,10 @@ export interface VersatileGUICoreEvent {
 }
 export default class VersatileGUICore extends tsx.Component<VersatileGUICoreProps, VersatileGUICoreEvent> {
     list: TaskProps[];
+    key: string;
+    index: number;
+    selectItem: TaskProps;
+    setSelectItem: any;
     draggable: any;
     theme: string;
     dragTag: string;
@@ -31,7 +37,8 @@ export default class VersatileGUICore extends tsx.Component<VersatileGUICoreProp
     created(): void;
     handleOnAdd(e: any): void;
     handleOnChange(e: any): void;
-    createDraggableList(messageList: TaskProps[]): JSX.Element;
+    handleClick(item: TaskProps, index: number): void;
+    createDraggableList(messageList: TaskProps[], clsName?: string): JSX.Element;
     render(): JSX.Element;
 }
 export {};

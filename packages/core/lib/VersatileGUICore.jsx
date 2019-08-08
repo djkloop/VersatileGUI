@@ -1,18 +1,24 @@
 import * as tslib_1 from "tslib";
 import * as tsx from 'vue-tsx-support';
 import { Component, Prop } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
 import PropTypes from 'vue-types';
-// import Draggable from 'vuedraggable';
 import './style/ver-core.styl';
+const CommonModule = namespace('common');
 const COMPONENT_NAME = 'VersatileGUICore';
 let VersatileGUICore = class VersatileGUICore extends tsx.Component {
     constructor() {
         super(...arguments);
         this.list = [];
+        this.key = '';
+        this.index = 0;
     }
     created() {
         // TODO:
         // console.log(this.theme);
+        console.log(this.selectItem);
+        this.setSelectItem({ name: 1 });
+        console.log(this.selectItem);
     }
     handleOnAdd(e) {
         this.$emit('add', e);
@@ -20,22 +26,38 @@ let VersatileGUICore = class VersatileGUICore extends tsx.Component {
     handleOnChange(e) {
         this.$emit('change', e);
     }
-    createDraggableList(messageList) {
-        console.log(messageList);
+    handleClick(item, index) {
+        this.key = item.id;
+        this.index = index;
+    }
+    createDraggableList(messageList, clsName) {
         const Draggable = this.draggable;
-        return (<Draggable onAdd={this.handleOnAdd} onChange={this.handleOnChange} class={'dragArea'} animation={100} swapThreshold={0.5} forceFallback={true} list={messageList} tag={this.dragTag} group={{ name: this.dragGroup.name }} ghostClass={this.dragGhostClass}>
+        return (<Draggable onAdd={this.handleOnAdd} onChange={this.handleOnChange} class={`${clsName ? clsName : 'ver_core_drag_area'}`} animation={100} list={messageList} tag={clsName ? this.dragTag : 'div'} group={{ name: this.dragGroup.name }} ghostClass={this.dragGhostClass}>
       {messageList.map((item, index) => {
-            return (<li class={'list-group-item'} key={item.name + '_' + index}>
-              <p>{item.name}</p>
-              {item.tasks ? this.createDraggableList(item.tasks) : null}
-            </li>);
+            return (item.tasks
+                ?
+                    <div class={{ ver_core_form_item: true, active: this.key === item.id }} key={item.name + '_' + index + '_' + item.id} data-key={item.name + '_' + index + '_' + item.id} id={item.name + '_' + index + '_' + item.id} onClick={() => this.handleClick(item, index)}>
+                    {this.createDraggableList(item.tasks, `ver_core_drag_area_${item.type}`)}
+                  </div>
+                :
+                    <div class={{ ver_core_form_item: true, active: this.key === item.id }} key={item.name + '_' + index + '_' + item.id} data-key={item.name + '_' + index + '_' + item.id} onClick={() => this.handleClick(item, index)}>
+                  <p>{item.name}</p>
+                </div>);
         })}
     </Draggable>);
     }
     render() {
-        return this.createDraggableList(this.listData);
+        return (<div class={'ver_core'}>
+        {this.createDraggableList(this.listData)}
+      </div>);
     }
 };
+tslib_1.__decorate([
+    CommonModule.State((state) => state.selectItem)
+], VersatileGUICore.prototype, "selectItem", void 0);
+tslib_1.__decorate([
+    CommonModule.Mutation('setSelectItem')
+], VersatileGUICore.prototype, "setSelectItem", void 0);
 tslib_1.__decorate([
     Prop(PropTypes.any)
 ], VersatileGUICore.prototype, "draggable", void 0);

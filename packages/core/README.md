@@ -1,4 +1,4 @@
-# `core`
+# `versatile-core`
 
 > TODO: description
 
